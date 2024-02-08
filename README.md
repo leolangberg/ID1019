@@ -1,2 +1,2 @@
 # ID1019
-Programming II
+This folder contains all coursework projects for the course _Programming II_ (ID1019).
