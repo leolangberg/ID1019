@@ -1,0 +1,31 @@
+
+  def parse_rows([]) do [] end
+  def parse_rows([h | t]) do [ parse(h) | parse_rows(t)] end
+
+  def parse(row) do
+    row = String.trim(row)
+    [springs, damaged_sizes] = String.split(row, " ")
+    damaged_sizes = parse_damaged_sizes(damaged_sizes)
+    springs = parse_springs(springs)
+    springs = String.to_charlist(springs)
+    {springs, damaged_sizes}
+
+  end
+
+  def parse_springs(str) do
+    basestr = Enum.join([str, str], "?")
+    str = Enum.join([basestr, str], "?")
+    str = Enum.join([basestr, str], "?")
+  end
+
+  def parse_damaged_sizes(str) do
+    basestr = String.split(str, ",")
+    basestr = Enum.map(basestr, fn(x) -> {nr, _} = Integer.parse(x); nr end)
+    str = append(basestr, basestr)
+    str = append(str, basestr)
+    str = append(str, basestr)
+    str = append(str, basestr)
+  end
+
+  def append([], rest) do rest end
+  def append([h | t], rest) do [h | append(t, rest)] end

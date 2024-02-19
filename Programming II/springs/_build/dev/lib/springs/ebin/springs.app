@@ -1,0 +1,9 @@
+{application,springs,
+             [{optional_applications,[]},
+              {applications,[kernel,stdlib,elixir,logger]},
+              {description,"springs"},
+              {modules,['Elixir.Bench','Elixir.DynamicProgramming',
+                        'Elixir.Memory','Elixir.Springs','Elixir.Springs2',
+                        'Elixir.Timber']},
+              {registered,[]},
+              {vsn,"0.1.0"}]}.

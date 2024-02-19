@@ -1,0 +1,10 @@
+defmodule Quicksort do
+
+  def qsort([]) do [] end
+  def qsort([h]) do [h] end
+  def qsort(all) do
+    {low, high} = partition(all)
+    lowS = qsort(low)
+    highS = qsort(high)
+    append(lowS, highS)
+end

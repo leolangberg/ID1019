@@ -1,0 +1,16 @@
+ def parse_rows([]) do [] end
+  def parse_rows([h | t]) do [ parse(h) | parse_rows(t)] end
+
+  def parse(row) do
+    row = String.trim(row)
+    [springs, damaged_sizes] = String.split(row, " ")
+    damaged_sizes = parse_damaged_sizes(damaged_sizes)
+    springs = String.to_charlist(springs)
+    {springs, damaged_sizes}
+
+  end
+
+  def parse_damaged_sizes(str) do
+    str = String.split(str, ",")
+    str = Enum.map(str, fn(x) -> {nr, _} = Integer.parse(x); nr end)
+  end
